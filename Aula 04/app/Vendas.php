@@ -14,7 +14,21 @@ class Vendas extends Model
     ];
     protected $table = 'Vendas';
 
-    public function Cliente (){
-        return $this->belongsTo( Clientes::class, 'cliente_id');
+    public function Cliente()
+    {
+        return $this->belongsTo(Clientes::class, 'cliente_id');
+    }
+
+    public function notaFiscal()
+    {
+
+        return $this->hasOne(NotasFiscais::class, 'venda_id');
+    }
+    public function ProdutosVenda()
+    {
+        return $this->hasMany(ProdutosVenda::class, 'venda_id');
+    }
+    public function Vendedor(){
+        return $this->hasOne(Vendedores::class, 'vendedor_id');
     }
 }
