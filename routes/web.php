@@ -18,6 +18,15 @@ Route::get('/', function () {
 });
 
 Route::get('/avisos', function () {
-    return view('avisos', ['nome'=>'Vinicius', 'mostrar'=> true, 'avisos'=>[['id'=>1,'texto'=>'Aviso 1'],
-    ['id'=>2,'texto'=>'Aviso 2']]]);
+    return view('avisos', ['nome' => 'Vinicius', 'mostrar' => true, 'avisos' => [
+        ['id' => 1, 'texto' => 'Aviso 1'],
+        ['id' => 2, 'texto' => 'Aviso 2']
+    ]]);
+});
+Route::get('/produtos', function () {
+    return view('produtos', ['produto' => 'Instrumentos', 'visivel' => true, 'instrumentos' => [
+        ['id' => 1, 'nome' =>'Violão', 'valor' => 'R$ 150,00'],
+        ['id' => 2, 'nome' =>'Ukulele', 'valor' => 'R$ 200,00'],
+        ['id' => 3, 'nome' =>'Guitarra', 'valor' => 'R$ 250,00']
+    ]]);
 });
