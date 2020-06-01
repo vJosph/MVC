@@ -35,6 +35,7 @@ Route::get('/produtos', function () {
 
 
 Route::get('/listar', 'ClientesController@listar')->middleware('auth');
+Route::get('/listaJogos', 'JogosController@listar')->middleware('auth');
 
 
 Auth::routes();

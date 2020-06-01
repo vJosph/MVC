@@ -19,4 +19,5 @@ class ClientesController extends Controller
 
         return view('clientes.listar', ['clientes' => $clientes]);
     }
+
 }
