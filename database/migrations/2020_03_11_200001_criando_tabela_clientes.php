@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CriaTabelasClientes extends Migration
+class CriandoTabelaClientes extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,18 @@ class CriaTabelasClientes extends Migration
      */
     public function up()
     {
-        Schema::create('Clientes', function (Blueprint $table) {
-            $table->id();
+        Schema::create('Clientes', function(Blueprint $table){
+            $table->bigIncrements('id');
             $table->string('nome');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('senha');
-            $table->rememberToken();
+            $table->string('email');
+            $table->string('endereco');
+            $table->string('telefone');
             $table->timestamps();
+
+
         });
     }
+    
 
     /**
      * Reverse the migrations.

@@ -6,15 +6,32 @@ use Illuminate\Database\Eloquent\Model;
 
 class Clientes extends Model
 {
-    protected $fillable = [
-        'id',
-        'nome',
-        'email',
-        'senha'
-    ];
-    protected $table = 'Clientes';
+    protected $fillable =['id', 'nome', 'email', 'endereco', 'telefone'];
 
-    public function Vendas(){
-        return $this->hasMany(Vendas:: class, 'id');
+    protected $table='Clientes';
+
+    public function vendas(){
+
+        return $this->hasMany(vendas::class, 'cliente_id');
+
     }
+
+    public function produtosVendidos()
+    {
+        return $this->hasManyThrough(
+            ProdutosVenda::class,
+            vendas::class,
+            'cliente_id',
+            'produto_id',
+            'id'
+
+        );
+    }
+
+    public function clienteVendedor()
+    {
+        return $this->hasManyThrough('App\Vendedores', 'App\vendas');
+    }
+
+
 }

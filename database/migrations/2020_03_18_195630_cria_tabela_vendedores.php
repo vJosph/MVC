@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CriaTabelasPlataformas extends Migration
+class CriaTabelaVendedores extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CriaTabelasPlataformas extends Migration
      */
     public function up()
     {
-        Schema::create('Plataformas', function (Blueprint $table) {
-            $table->id();
+        Schema::create('Vendedores', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->string('nome');
-            $table->longText('img');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CriaTabelasPlataformas extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Plataformas');
+        Schema::dropIfExists('Vendedores');
     }
 }

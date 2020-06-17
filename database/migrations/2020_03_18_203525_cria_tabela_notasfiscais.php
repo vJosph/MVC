@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CriaTabelasVendas extends Migration
+class CriaTabelaNotasfiscais extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CriaTabelasVendas extends Migration
      */
     public function up()
     {
-        Schema::create('Vendas', function (Blueprint $table) {
+        Schema::create('NotasFiscais', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('cliente_id')->unsigned();
-            $table->foreign('cliente_id')->references('id')->on('Clientes')->onDelete('cascade');
-            $table->date('data_da_venda');
+            $table->bigInteger('venda_id')->unsigned();
+            $table->foreign('venda_id')->references('id')->on('vendas')->onDelete('cascade');
+            $table->double('valor', 10,2);
+            $table->double('imposto', 10,2);
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CriaTabelasVendas extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Vendas');
+        Schema::dropIfExists('NotasFiscais');
     }
 }

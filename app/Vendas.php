@@ -4,16 +4,27 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Vendas extends Model
+class vendas extends Model
 {
-    protected $fillable = [
-        'id',
-        'cliente_id',
-        'data_da_venda'
-    ];
-    protected $table = 'Vendas';
+    protected $fillable =['id', 'cliente_id', 'data_da_venda', 'vendedor_id'];
 
-    public function Clientes(){
-        return $this->hasMany(Clientes:: class, 'id');
+    protected $table='vendas';
+
+    public function notaFiscal(){
+        return $this->hasOne(NotasFiscais::class, 'venda_id');
     }
+
+    public function produtosVenda(){
+        return $this->hasMany(ProdutosVenda::class, 'id');
+    }
+
+    public function VendedorhasVenda(){
+        return $this->hasOne(Vendedores::class, 'id');
+    }
+
+     public function vendedor(){
+        return $this->belongsTo(Vendedores::class, 'vendedor_id');
+    }
+
+
 }
